@@ -1,6 +1,7 @@
 import './App.css'
 import {Component} from "react";
 import Button from "./components/Button.jsx";
+import './css/style.css';
 
 class App extends Component {
 
@@ -17,6 +18,7 @@ class App extends Component {
     };
 
     addToCurrent = (symbol) => {
+        console.log(symbol);
         this.setState({current: this.state.current + symbol});
     };
 
@@ -47,12 +49,12 @@ class App extends Component {
             <>
                 <div>
                     <input className={"result"} type={"text"} value={this.state.current}/>
-
+                    <br /> <br />
                     {
                         buttons.map((button, idx) =>
                             (
                                 <Button symbol={button.symbol} key={idx} cols={button.cols}
-                                        action={(symbol) => button.action}/>
+                                        action={(symbol) => button.action(symbol)}/>
                             )
                         )
                     }
